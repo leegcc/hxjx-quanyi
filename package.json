@@ -1,0 +1,21 @@
+{
+  "name": "hxjx-quanyi",
+  "version": "1.0.0",
+  "description": "鸿学助学权益自动签到、抽奖",
+  "main": "checkin.js",
+  "dependencies": {
+    "got": "^11.8.0",
+    "moment": "^2.29.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "https://github.com/leegcc/hxjx-quanyi.git",
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leegcc/hxjx-quanyi/issues"
+  },
+  "homepage": "https://github.com/leegcc/hxjx-quanyi#readme"
+}

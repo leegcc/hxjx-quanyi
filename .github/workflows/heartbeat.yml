@@ -1,0 +1,23 @@
+# 每分钟执行
+name: heartbeat
+on:
+  workflow_dispatch:
+  schedule:
+    - cron:  '*/1 * * * *'
+jobs:
+  checkin:
+    name: 保持登录
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v2
+      - name: 安装 Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 11.x
+      - name: 安装依赖
+        run: npm install
+      - name: 执行保持登录
+        run: node heartbeat.js
+        env:
+          JSESSIONID: ${{ secrets.JSESSIONID }}

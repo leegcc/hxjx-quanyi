@@ -1,0 +1,23 @@
+# 每小时执行
+name: luckydraw
+on:
+  workflow_dispatch:
+  schedule:
+    - cron:  '0 * * * *'
+jobs:
+  checkin:
+    name: 抽奖
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v2
+      - name: 安装 Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 11.x
+      - name: 安装依赖
+        run: npm install
+      - name: 执行抽奖
+        run: node luckydraw.js
+        env:
+          JSESSIONID: ${{ secrets.JSESSIONID }}

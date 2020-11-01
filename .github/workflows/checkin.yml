@@ -1,0 +1,23 @@
+# 每小时执行
+name: checkin
+on:
+  workflow_dispatch:
+  schedule:
+    - cron:  '*/1 * * * *'
+jobs:
+  checkin:
+    name: 签到
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v2
+      - name: 安装 Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 11.x
+      - name: 安装依赖
+        run: npm install
+      - name: 执行签到
+        run: node checkin.js
+        env:
+          JSESSIONID: ${{ secrets.JSESSIONID }}
