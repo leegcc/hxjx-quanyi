@@ -1,12 +1,6 @@
 const got = require('got');
 
-async function run() {
-  const sessionId = process.env.JSESSIONID;
-  if (sessionId == null) {
-    console.warn('请先配置 JSESSIONID')
-    return;
-  }
-
+async function run(sessionId) {
   const response = await got.post('http://quanyi.hxjx360.com/api/active/luckdraw', {
     headers: {
       Cookie: `JSESSIONID=${sessionId}`
@@ -28,5 +22,14 @@ async function run() {
 }
 
 ;(async () => {
-  await run();
+  const sessionIds = process.env.JSESSIONID;
+  if (sessionIds == null) {
+    console.warn('请先配置 JSESSIONID')
+    return;
+  }
+  for (const sessionId of sessionIds.trim().split('&')) {
+    console.warn(`> 抽奖开始 [${sessionId}]`);
+    await run(sessionId);
+    console.warn(`< 抽奖结束`);
+  }
 })();
