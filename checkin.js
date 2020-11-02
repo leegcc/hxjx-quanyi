@@ -24,7 +24,7 @@ async function run(sessionId) {
     return;
   }
   for (const sessionId of sessionIds.trim().split('&')) {
-    console.warn(`> 签到开始 [${sessionId}]`);
+    console.warn(`> 签到开始`);
     await run(sessionId);
     console.warn(`< 签到结束`);
   }
