@@ -28,7 +28,7 @@ async function run(sessionId) {
     return;
   }
   for (const sessionId of sessionIds.trim().split('&')) {
-    console.warn(`> 抽奖开始 [${sessionId}]`);
+    console.warn(`> 抽奖开始`);
     await run(sessionId);
     console.warn(`< 抽奖结束`);
   }
