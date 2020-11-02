@@ -22,7 +22,7 @@ async function run(sessionId) {
     return;
   }
   for (const sessionId of sessionIds.trim().split('&')) {
-    console.warn(`> 保持登录开始 [${sessionId}]`);
+    console.warn(`> 保持登录开始`);
     await run(sessionId);
     console.warn(`< 保持登录结束`);
   }
