@@ -10,7 +10,7 @@ module.exports = async function (username, password) {
   const response = await instance.post('api/login2', {
     searchParams: {
       username,
-      password: `password_CODE_PW_OPENID_${password}_CODE_PW_OPENID_A`
+      password: `password_CODE_PW_OPENID_${password}_CODE_PW_OPENID_${username}`
     }
   }).json();
 
