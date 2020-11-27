@@ -1,31 +1,31 @@
-const got = require('got');
+const getUsers = require('./users');
+const login = require('./login');
 const moment = require('moment');
 
-async function run(sessionId) {
-  const body = await got.post('http://quanyi.hxjx360.com/api/active/getAward', {
-    headers: {
-      Cookie: `JSESSIONID=${sessionId}`
-    },
+async function run(username, password) {
+  const got = await login(username, password);
+  const body = await got.post('api/active/getAward', {
     form: {
       date: moment().format('YYYY-MM-DD')
     }
   }).json();
-  console.info(JSON.stringify(body));
 
   if (body.code === 301) {
     console.warn('重复签到');
+    return;
   }
+
+  console.info(JSON.stringify(body));
 }
 
 ;(async () => {
-  const sessionIds = process.env.JSESSIONID;
-  if (sessionIds == null) {
-    console.warn('请先配置 JSESSIONID')
-    return;
-  }
-  for (const sessionId of sessionIds.trim().split('&')) {
-    console.warn(`> 签到开始`);
-    await run(sessionId);
-    console.warn(`< 签到结束`);
+  for (const {username, password} of getUsers()) {
+    console.warn(`${username} 签到开始`);
+    try {
+      await run(username, password);
+    } catch (e) {
+      console.error(e);
+    }
+    console.warn(`${username} 签到结束`);
   }
 })();

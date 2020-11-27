@@ -3,7 +3,7 @@ name: checkin
 on:
   workflow_dispatch:
   schedule:
-    - cron:  '*/1 * * * *'
+    - cron:  '0 * * * *'
 jobs:
   checkin:
     name: 签到
@@ -20,4 +20,4 @@ jobs:
       - name: 执行签到
         run: node checkin.js
         env:
-          JSESSIONID: ${{ secrets.JSESSIONID }}
+          JSESSIONID: ${{ secrets.USERS }}

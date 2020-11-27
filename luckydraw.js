@@ -1,16 +1,13 @@
-const got = require('got');
+const getUsers = require('./users');
+const login = require('./login');
 
-async function run(sessionId) {
-  const response = await got.post('http://quanyi.hxjx360.com/api/active/luckdraw', {
-    headers: {
-      Cookie: `JSESSIONID=${sessionId}`
-    }
-  }).json();
-  console.log(JSON.stringify(response));
+async function run(username, password) {
+  const got = await login(username, password);
 
+  const response = await got.post('api/active/luckdraw').json();
   const {code, data, items} = response;
   if (code === -201) {
-    console.warn(data);
+    console.error(data);
     return;
   }
   if (items === -3) {
@@ -22,14 +19,13 @@ async function run(sessionId) {
 }
 
 ;(async () => {
-  const sessionIds = process.env.JSESSIONID;
-  if (sessionIds == null) {
-    console.warn('请先配置 JSESSIONID')
-    return;
-  }
-  for (const sessionId of sessionIds.trim().split('&')) {
-    console.warn(`> 抽奖开始`);
-    await run(sessionId);
-    console.warn(`< 抽奖结束`);
+  for (const {username, password} of getUsers()) {
+    console.info(`${username} 抽奖开始`);
+    try {
+      await run(username, password);
+    } catch (e) {
+      console.error(e);
+    }
+    console.info(`${username} 抽奖结束`);
   }
 })();

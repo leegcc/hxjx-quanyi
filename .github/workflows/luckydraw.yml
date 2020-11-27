@@ -20,4 +20,4 @@ jobs:
       - name: 执行抽奖
         run: node luckydraw.js
         env:
-          JSESSIONID: ${{ secrets.JSESSIONID }}
+          JSESSIONID: ${{ secrets.USERS }}
