@@ -13,7 +13,7 @@
 
 | 名称 | 描述 |
 | - | - |
-| `USERS` | 用户密码信息列表 |
+| `USERS` | 用户密码列表 |
 | `FT_SCKEY` | 方糖通知 KEY |
 
 ## Workflows
