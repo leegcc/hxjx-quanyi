@@ -17,7 +17,7 @@ async function run(username, password) {
   }
 
   await ft(JSON.stringify(body));
-  console.info(JSON.stringify(body));
+  console.info(username + ' ' + JSON.stringify(body));
 }
 
 ;(async () => {
