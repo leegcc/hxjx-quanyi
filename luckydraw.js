@@ -1,6 +1,6 @@
 const getUsers = require('./users');
 const login = require('./login');
-const ft = require('./ft');
+const ft = require('./ftqq');
 
 async function run(username, password) {
   const got = await login(username, password);
