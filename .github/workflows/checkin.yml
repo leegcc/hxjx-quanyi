@@ -20,4 +20,5 @@ jobs:
       - name: 执行签到
         run: node checkin.js
         env:
-          JSESSIONID: ${{ secrets.USERS }}
+          USERS: ${{ secrets.USERS }}
+          FT_SCKEY: ${{ secrets.FT_SCKEY }}
