@@ -17,7 +17,7 @@ async function run(username, password) {
   }
   const amount = [10000, 800, 500, 300, 200, 100, 50, 10][items - 1];
   console.info(`获得鸿利金：${amount}`);
-  await ft(`${username} 获得鸿利金：${amount}`);
+  await ft(`${username} 抽奖获得鸿利金：${amount}`);
 }
 
 ;(async () => {
