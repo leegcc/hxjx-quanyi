@@ -16,7 +16,7 @@ async function run(username, password) {
     return;
   }
 
-  await ft(username + ' ' + body.items);
+  await ft(username + ' 签到' + body.items);
   console.info(body.items);
 }
 
