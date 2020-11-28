@@ -16,8 +16,8 @@ async function run(username, password) {
     return;
   }
 
-  await ft(JSON.stringify(body));
-  console.info(username + ' ' + JSON.stringify(body));
+  await ft(username + ' ' + body.items);
+  console.info(body.items);
 }
 
 ;(async () => {
