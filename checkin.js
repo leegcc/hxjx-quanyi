@@ -1,7 +1,7 @@
 const getUsers = require('./users');
 const login = require('./login');
 const moment = require('moment');
-const ft = require('./ftqq');
+const ft = require('./wework');
 
 async function run(username, password) {
   const got = await login(username, password);
