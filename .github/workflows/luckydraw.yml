@@ -22,3 +22,4 @@ jobs:
         env:
           USERS: ${{ secrets.USERS }}
           FT_SCKEY: ${{ secrets.FT_SCKEY }}
+          WEWORK: ${{ secrets.WEWORK }}
